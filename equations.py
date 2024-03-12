@@ -14,3 +14,6 @@ def h(x):
 
 def h_prima(x):
     return (3 * x - 4) * x + 1
+
+def i(x):
+    return x**5 + x**3 + 3

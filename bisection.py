@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def bisection(f, a, b, nmax, epsilon):
+def bisection_method(f, a, b, nmax, epsilon):
     num_points = 1000
     x = []
     y = []
