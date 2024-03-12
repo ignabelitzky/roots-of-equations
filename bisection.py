@@ -1,10 +1,26 @@
 from equations import *
+import matplotlib.pyplot as plt
+import numpy as np
+
 
 def bisection(f, a, b, nmax, epsilon):
+    num_points = 1000
+    x = []
+    y = []
+    pointsX = []
+    pointsY = []
+
+    x = np.linspace(a, b, num_points)
+    y = f(x)
+    plt.plot(x, y)
+    plt.xlabel('X-axis')
+    plt.ylabel('Y-axis')
+    plt.title('Bisection Method')
+
     fa = f(a)
     fb = f(b)
 
-    if math.copysign(1, fa) == math.copysign(1, fb):
+    if np.sign(fa) == np.sign(fb):
         print("Error: f(a) and f(b) have the same sign")
         return
     
@@ -14,10 +30,14 @@ def bisection(f, a, b, nmax, epsilon):
         c = a + error
         fc = f(c)
         print(f"n = {n}, c = {c}, f(c) = {fc}, error = {error}")
+        pointsX.append(c)
+        pointsY.append(fc)
         if abs(error) < epsilon:
             print(f"Convergence achieved after {n} iterations")
+            plt.scatter(pointsX, pointsY, color='red')
+            plt.show()
             return c
-        if math.copysign(1, fa) != math.copysign(1, fc):
+        if np.sign(fa) != np.sign(fc):
             b = c
             fb = fc
         else:
